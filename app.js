@@ -55,12 +55,12 @@ app.post("/listings", async (req, res) => {
   const newListing = new Listing(req.body.listing);
   await newListing.save();
 
-  try {
-    const newListing = new Listing(req.body.listing);
-    await newListing.save();
-  } catch (error) {
-    res.status(500).send({ error: error.message });
-  }
+  // try {
+  //   const newListing = new Listing(req.body.listing);
+  //   await newListing.save();
+  // } catch (error) {
+  //   res.status(500).send({ error: error.message });
+  // }
   
   res.redirect("/listings"); 
 });
