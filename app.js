@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const Listing = require("./models/listing.js")
+const path = require("path");
+const bodyParser = require('body-parser');
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/explore360";
 
@@ -17,23 +19,70 @@ async function main() {
   await mongoose.connect(MONGO_URL);
 }
 
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+app.use(bodyParser.json());
+app.use(express.urlencoded({extended: true}));
+
+
 app.get("/", (req, res) => {
     res.send("Server is started");
 });
 
-app.get("/testListing", async (req, res) => {
-    let sampleListing = new Listing({
-        title: "My new Villa",
-        description : "By The Beach",
-        price: 1200,
-        location: "Calanguta, Goa",
-        country: "India",
-    });
+// Index Route
+app.get("/listings", async (req, res) => {
+  const allListings = await Listing.find({});
+  res.render("./listings/index.ejs", {allListings});
+})
 
-    await sampleListing.save();
-    console.log("sample was saved");
-    res.send("successful")
+// New Route
+app.get("/listings/new", (req, res) => {
+  res.render("./listings/new.ejs")
+})
+
+// Show Route
+app.get("/listings/:id",async (req, res) => {
+  let {id} = req.params;
+  const listing = await Listing.findById(id);
+  res.render("./listings/show.ejs", { listing });
 });
+
+//Create Route
+app.post("/listings", async (req, res) => {
+  // let {title, description, image, price, country, location} = req.body;
+  // let listing = req.body.listing;
+  // console.log(listing);
+  const newListing = new Listing(req.body.listing);
+  await newListing.save();
+
+  // try {
+  //   const newListing = new Listing(req.body.listing);
+  //   await newListing.save();
+  // } catch (error) {
+  //   res.status(500).send({ error: error.message });
+  // }
+  
+  res.redirect("/listings"); 
+});
+
+// Edit Route
+app.get("/listings/:id/edit", (req, res) => {
+  
+})
+
+// app.get("/testListing", async (req, res) => {
+//     let sampleListing = new Listing({
+//         title: "My new Villa",
+//         description : "By The Beach",
+//         price: 1200,
+//         location: "Calanguta, Goa",
+//         country: "India",
+//     });
+
+//     await sampleListing.save();
+//     console.log("sample was saved");
+//     res.send("successful")
+// });
 
 app.listen(8080, () => {
     console.log("server is listening to the port");
