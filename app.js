@@ -49,9 +49,9 @@ app.get("/listings/:id",async (req, res) => {
 
 //Create Route
 app.post("/listings", async (req, res) => {
-  let {title, description, image, price, country, location} = req.body;
-  let listing = req.body.listing;
-  console.log(listing);
+  // let {title, description, image, price, country, location} = req.body;
+  // let listing = req.body.listing;
+  // console.log(listing);
   const newListing = new Listing(req.body.listing);
   await newListing.save();
 
