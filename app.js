@@ -70,19 +70,19 @@ app.get("/listings/:id/edit", (req, res) => {
   
 })
 
-app.get("/testListing", async (req, res) => {
-    let sampleListing = new Listing({
-        title: "My new Villa",
-        description : "By The Beach",
-        price: 1200,
-        location: "Calanguta, Goa",
-        country: "India",
-    });
+// app.get("/testListing", async (req, res) => {
+//     let sampleListing = new Listing({
+//         title: "My new Villa",
+//         description : "By The Beach",
+//         price: 1200,
+//         location: "Calanguta, Goa",
+//         country: "India",
+//     });
 
-    await sampleListing.save();
-    console.log("sample was saved");
-    res.send("successful")
-});
+//     await sampleListing.save();
+//     console.log("sample was saved");
+//     res.send("successful")
+// });
 
 app.listen(8080, () => {
     console.log("server is listening to the port");
