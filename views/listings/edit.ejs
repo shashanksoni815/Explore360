@@ -6,21 +6,21 @@
     <title>Explore360</title>
 </head>
 <body>
-    <h3>Create a New Listing</h3>
-    <form action="/listings" method="post">
-        <input type="text" name="listing[title]" placeholder="enter title">
+    <h3>Edit your Listing</h3>
+    <form action="/listings/<%= listing._id %>" method="post">
+        <input type="text" name="listing[title]" value=" <%= listing.title %> " >
         <br><br>
         <textarea name="listing[description]" placeholder="enter description"></textarea>
         <br><br>
-        <input type="text" name="listing[image]" placeholder="enter image URL/LINK">
+        <input type="text" name="listing[image]" value=" <%= listing.image %> " >
         <br><br>
-        <input type="number" name="listing[price]" placeholder="enter price">
+        <input type="number" name="listing[price]" value="<%= listing.price %>" >
         <br><br>
-        <input type="text" name="listing[country]" placeholder="enter country">
+        <input type="text" name="listing[country]" value=" <%= listing.country %> " >
         <br><br>
-        <input type="text" name="listing[location]" placeholder="enter location">
+        <input type="text" name="listing[location]" value=" <%= listing.location  %> " >
         <br><br>
-        <button>Add</button>
+        <button>Edit</button>
     </form>
 </body>
 </html>
