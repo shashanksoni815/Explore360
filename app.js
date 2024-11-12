@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const Listing = require("./models/listing.js")
 const path = require("path");
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override')
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/explore360";
 
@@ -23,6 +24,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(bodyParser.json());
 app.use(express.urlencoded({extended: true}));
+app.use(methodOverride('_method'));
 
 
 app.get("/", (req, res) => {
@@ -70,6 +72,12 @@ app.get("/listings/:id/edit", async (req, res) => {
   let {id} = req.params;
   const listing = await Listing.findById(id);
   res.render("./listings/edit.ejs", { listing })
+});
+
+// Update Route
+app.put("/listings/:id", async (req, res) => {
+  let {id} = req.params;
+  Listing.findByIdAndUpdate()
 })
 
 // app.get("/testListing", async (req, res) => {
