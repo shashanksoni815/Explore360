@@ -27,7 +27,8 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.engine('ejs', ejsMate);
-app.use(express.static(path.join(__dirname, "/public")));
+// app.use(express.static(path.join(__dirname, "/public")));
+app.use('/public', express.static('public'));
 
 app.get("/", (req, res) => {
     res.send("Server is started");
