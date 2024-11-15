@@ -20,7 +20,7 @@ body {
 /* footer */
 .f-info-links a {
     text-decoration: none;
-    color: #222222;
+    color: #222222 !important;
 }
 
 .f-info-links a:hover {
@@ -34,6 +34,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 .f-info-socials i {
