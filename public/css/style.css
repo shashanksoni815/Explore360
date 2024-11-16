@@ -104,3 +104,7 @@ body {
 .form-control {
     border-color: #000000 !important;
 }
+
+.show-img {
+    height: 30vh;
+}
