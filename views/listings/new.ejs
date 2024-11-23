@@ -2,7 +2,7 @@
 <div class="row weight mt-3">
     <div class="col-8 offset-2">
     <h3>Create a New Listing</h3>
-    <form action="/listings" method="post">
+    <form action="/listings" method="post" novalidate class="needs-validation">
         <div class="mb-3" >
             <label for="title" class="form-label">Title</label>
             <input type="text" name="listing[title]" placeholder="enter title" class="form-control" required>
