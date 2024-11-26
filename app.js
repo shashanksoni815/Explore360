@@ -106,6 +106,10 @@ app.delete("/listings/:id", async (req, res) => {
 //     res.send("successful")
 // });
 
+app.get((err, req, res, next) => {
+  console.log("Syntax Error")
+})
+
 app.listen(8080, () => {
     console.log("server is listening to the port");
 });
