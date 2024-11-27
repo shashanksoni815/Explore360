@@ -6,6 +6,8 @@ const path = require("path");
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override')
 const ejsMate = require("ejs-mate");
+const wrapAsync = require("./utils/wrapAsync.js")
+const ExpressError = require("./utils/ExpressError.js")
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/explore360";
 
@@ -53,16 +55,16 @@ app.get("/listings/:id",async (req, res) => {
 });
 
 //Create Route
-app.post("/listings", async (req, res, next) => {
-  try {
+app.post("/listings", wrapAsync(async (req, res, next) => {
+  // try {
   const newListing = new Listing(req.body.listing);
   await newListing.save();
   res.redirect("/listings"); 
-  }catch(err) {
-    next(err);
-  }
+  // }catch(err) {
+  //   next(err);
+  // }
 
-});
+}));
 
 // Edit Route
 app.get("/listings/:id/edit", async (req, res) => {
@@ -100,8 +102,9 @@ app.delete("/listings/:id", async (req, res) => {
 //     res.send("successful")
 // });
 
-app.get((err, req, res, next) => {
-  console.log("Syntax Error")
+app.use((err, req, res, next) => {
+  let {statusCode, message} = err;
+  res.status(statusCode).send(message);
 })
 
 app.listen(8080, () => {
