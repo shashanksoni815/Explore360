@@ -70,7 +70,7 @@ app.post("/listings", wrapAsync(async (req, res, next) => {
 app.get("/listings/:id/edit", async (req, res) => {
   let {id} = req.params;
   const listing = await Listing.findById(id);
-  res.render("./listings/edit.ejs", { listing })
+  res.render("./listings/edit.ejs", { listing });
 });
 
 // Update Route
