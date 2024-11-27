@@ -105,7 +105,7 @@ app.delete("/listings/:id", async (req, res) => {
 app.use((err, req, res, next) => {
   let {statusCode, message} = err;
   res.status(statusCode).send(message);
-})
+});
 
 app.listen(8080, () => {
     console.log("server is listening to the port");
