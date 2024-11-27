@@ -53,21 +53,15 @@ app.get("/listings/:id",async (req, res) => {
 });
 
 //Create Route
-app.post("/listings", async (req, res) => {
-  // let {title, description, image, price, country, location} = req.body;
-  // let listing = req.body.listing;
-  // console.log(listing);
+app.post("/listings", async (req, res, next) => {
+  try {
   const newListing = new Listing(req.body.listing);
   await newListing.save();
-
-  // try {
-  //   const newListing = new Listing(req.body.listing);
-  //   await newListing.save();
-  // } catch (error) {
-  //   res.status(500).send({ error: error.message });
-  // }
-  
   res.redirect("/listings"); 
+  }catch(err) {
+    next(err);
+  }
+
 });
 
 // Edit Route
