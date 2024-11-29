@@ -57,7 +57,7 @@ app.get("/listings", wrapAsync(async (req, res) => {
 // New Route
 app.get("/listings/new", (req, res) => {
   res.render("./listings/new.ejs")
-})
+});
 
 // Show Route
 app.get("/listings/:id", wrapAsync(async (req, res) => {
