@@ -46,7 +46,8 @@ const validateListing = (req, res, next) => {
   } else {
     next();
   }
-}
+};
+
 // Index Route
 app.get("/listings", wrapAsync(async (req, res) => {
   const allListings = await Listing.find({});
