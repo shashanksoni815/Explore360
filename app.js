@@ -105,7 +105,9 @@ app.post("/listings/:id/reviews", async(req, res) => {
   let listing = await Listing.findById(req.params.id);
   let newReviw = new Review(req.body.review);
 
-  
+  listing.reviews.push(newReviw);
+
+  await newReviw.save();
 })
 
 // app.get("/testListing", async (req, res) => {
