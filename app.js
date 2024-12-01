@@ -108,8 +108,8 @@ app.post("/listings/:id/reviews", async(req, res) => {
   listing.reviews.push(newReviw);
 
   await newReviw.save();
-  await listing.save
-})
+  await listing.save();
+});
 
 // app.get("/testListing", async (req, res) => {
 //     let sampleListing = new Listing({
