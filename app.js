@@ -109,6 +109,8 @@ app.post("/listings/:id/reviews", async(req, res) => {
 
   await newReviw.save();
   await listing.save();
+
+  console.log();
 });
 
 
