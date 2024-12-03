@@ -125,9 +125,6 @@ app.post("/listings/:id/reviews", async(req, res) => {
 //     });
 
 //     await sampleListing.save();
-//     console.log("sample was saved");
-//     res.send("successful")
-// });
 
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page not Found!"))
