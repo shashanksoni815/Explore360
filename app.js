@@ -121,10 +121,7 @@ app.post("/listings/:id/reviews", async(req, res) => {
 //         description : "By The Beach",
 //         price: 1200,
 //         location: "Calanguta, Goa",
-//         country: "India",
-//     });
 
-//     await sampleListing.save();
 
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page not Found!"))
