@@ -118,9 +118,7 @@ app.post("/listings/:id/reviews", async(req, res) => {
 // app.get("/testListing", async (req, res) => {
 //     let sampleListing = new Listing({
 //         title: "My new Villa",
-//         description : "By The Beach",
-//         price: 1200,
-//         location: "Calanguta, Goa",
+
 
 
 app.all("*", (req, res, next) => {
