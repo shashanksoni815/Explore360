@@ -115,9 +115,19 @@ app.post("/listings/:id/reviews", async(req, res) => {
 });
 
 
+// app.get("/testListing", async (req, res) => {
+//     let sampleListing = new Listing({
+//         title: "My new Villa",
+//         description : "By The Beach",
+//         price: 1200,
+//         location: "Calanguta, Goa",
+//         country: "India",
+//     });
 
-
-
+//     await sampleListing.save();
+//     console.log("sample was saved");
+//     res.send("successful")
+// });
 
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page not Found!"))
