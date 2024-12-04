@@ -103,11 +103,11 @@ app.delete("/listings/:id", wrapAsync(async (req, res) => {
 // Reviews Post route
 app.post("/listings/:id/reviews", async(req, res) => {
   let listing = await Listing.findById(req.params.id);
-  let newReviw = new Review(req.body.review);
+  let newReview = new Review(req.body.review);
 
-  listing.reviews.push(newReviw);
+  listing.review.push(newReview);
 
-  await newReviw.save();
+  await newReview.save();
   await listing.save();
 
   console.log("New Reviw saved");
