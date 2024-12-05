@@ -50,7 +50,7 @@ const validateListing = (req, res, next) => {
 };
 
 const validateReview = (req, res, next) => {
-  let {error} = reviewSchemaSchema.validate(req.body);
+  let {error} = reviewSchema.validate(req.body);
   // console.log(result);
   if(error) {
     let errMsg = error.details.map((el) => el.message).join("");
@@ -74,7 +74,7 @@ app.get("/listings/new", (req, res) => {
 // Show Route
 app.get("/listings/:id", wrapAsync(async (req, res) => {
   let {id} = req.params;
-  const listing = await Listing.findById(id);
+  const listing = await Listing.findById(id).populate("review");
   res.render("./listings/show.ejs", { listing });
 }));
 
@@ -114,7 +114,7 @@ app.delete("/listings/:id", wrapAsync(async (req, res) => {
 // Reviews Post route
 app.post("/listings/:id/reviews", validateReview, wrapAsync(async(req, res) => {
   let listing = await Listing.findById(req.params.id);
-  let newReview = new Review(req.body.reviewSchema);
+  let newReview = new Review(req.body);
 
   listing.review.push(newReview);
 
