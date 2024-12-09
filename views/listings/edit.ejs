@@ -18,21 +18,21 @@
             <input type="text" name="listing[image]" value=" <%= listing.image %> " class="form-control" required>
         </div>
         <div class="row">
-        <div class="mb-3 col-md-4">
-            <label for="price" class="form-label">Price</label>
-            <input type="number" name="listing[price]" value="<%= listing.price %>" class="form-control" required>
-            <div class="invalid-feedback">Enter a valid Price</div>
-        </div>        
-        <div class="mb-3 col-md-4">
-            <label for="country" class="form-label">Country</label>
-            <input type="text" name="listing[country]" value=" <%= listing.country %> " class="form-control" required>
-            <div class="valid-feedback">Enter the Country name</div>
-        </div>       
-        <div class="mb-3 col-md-4"> 
-            <label for="location" class="form-label">Location</label>
-            <input type="text" name="listing[location]" value=" <%= listing.location  %> " class="form-control" required>
-            <div class="valid-feedback">Enter your correct location</div>
-        </div>
+            <div class="mb-3 col-md-4">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" name="listing[price]" value="<%= listing.price %>" class="form-control" required>
+                <div class="invalid-feedback">Enter a valid Price</div>
+            </div>        
+            <div class="mb-3 col-md-4">
+                <label for="country" class="form-label">Country</label>
+                <input type="text" name="listing[country]" value=" <%= listing.country %> " class="form-control" required>
+                <div class="valid-feedback">Enter the Country name</div>
+            </div>       
+            <div class="mb-3 col-md-4"> 
+                <label for="location" class="form-label">Location</label>
+                <input type="text" name="listing[location]" value=" <%= listing.location  %> " class="form-control" required>
+                <div class="valid-feedback">Enter your correct location</div>
+            </div>
          </div>   
         <button class="btn btn-dark mt-3 add-btn">Edit</button>
     </form>
