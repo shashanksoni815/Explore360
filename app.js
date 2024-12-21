@@ -83,9 +83,7 @@ app.post("/listings", validateListing, wrapAsync(async (req, res, next) => {
   const newListing = new Listing(req.body.listing);
   await newListing.save();
   res.redirect("/listings"); 
-  // }catch(err) {
-  //   next(err);
-  // }
+
 
 }));
 
@@ -134,7 +132,6 @@ app.delete("/listings/:id/reviews/:reviewId", wrapAsync(async (req, res) => {
 
   res.redirect(`/listings/${id}`)
 }))
-
 
 // app.get("/testListing", async (req, res) => {
 //     let sampleListing = new Listing({
